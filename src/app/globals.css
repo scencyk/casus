@@ -240,7 +240,7 @@ html {
     top: calc(50.2% - var(--eye-w) * 701 / 735 / 2);
     width: var(--eye-w);
     mix-blend-mode: color-dodge;
-    opacity: 0.5;
+    opacity: 0.65;
   }
   .eye-frame {
     position: relative;
