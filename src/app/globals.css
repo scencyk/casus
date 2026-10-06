@@ -215,7 +215,7 @@ html {
   .more-year {
     top: 89.7%;
     translate: -50% 0;
-    font-size: clamp(10px, 1.86vw, 26px);
+    font-size: clamp(7px, 1.3vw, 18px);
     font-weight: 400;
     line-height: 1.08;
     letter-spacing: -0.04em;
