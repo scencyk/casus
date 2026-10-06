@@ -132,9 +132,12 @@
 
 :root {
   --font-sans: var(--font-geist), system-ui, sans-serif;
+  /* defaults = Figma frame; overridden per question in landing.tsx */
   --casus-bg: #270608;
-  --casus-red: #dd0000;
-  --casus-lime: #bffc16;
+  --casus-ink: #dd0000;
+  --casus-accent: #bffc16;
+  --casus-mark: #d6d1f0;
+  --scheme-ease: 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   /* frame insets from the Figma frame (537 × 429), as viewport fractions */
   --pad-x: 5.9vw;
   --pad-top: 9vh;
@@ -148,6 +151,7 @@
     width: 100%;
     overflow: hidden;
     background: var(--casus-bg);
+    transition: background-color var(--scheme-ease);
   }
 
   .landing-eye {
@@ -179,7 +183,11 @@
   .landing-icon {
     flex: none;
     width: clamp(18px, 4.47vw, 64px);
-    height: auto;
+    aspect-ratio: 24 / 29;
+    background-color: var(--casus-accent);
+    -webkit-mask: url("/eye-icon.svg") center / contain no-repeat;
+    mask: url("/eye-icon.svg") center / contain no-repeat;
+    transition: background-color var(--scheme-ease);
     margin-top: 1.26vh;
     transform-origin: 50% 50%;
     animation: casus-blink 6s ease-in-out 3s infinite;
@@ -193,8 +201,9 @@
     font-size: clamp(22px, 5.48vw, 72px);
     line-height: 1.08;
     letter-spacing: -0.04em;
-    color: var(--casus-red);
+    color: var(--casus-ink);
     word-break: break-word;
+    transition: color var(--scheme-ease);
   }
   .query-caret {
     display: inline-block;
@@ -202,7 +211,8 @@
     height: 0.95em;
     margin-left: 0.06em;
     vertical-align: -0.12em;
-    background: var(--casus-red);
+    background: var(--casus-ink);
+    transition: background-color var(--scheme-ease);
     animation: casus-caret 1s steps(1) infinite;
   }
 
@@ -223,11 +233,16 @@
     font-size: clamp(12px, 2.5vw, 30px);
     line-height: 1.08;
     letter-spacing: -0.04em;
-    color: var(--casus-lime);
+    color: var(--casus-accent);
+    transition: color var(--scheme-ease);
   }
   .landing-logo {
     width: clamp(88px, 18.2vw, 220px);
-    height: auto;
+    aspect-ratio: 97.82 / 22.24;
+    background-color: var(--casus-mark);
+    -webkit-mask: url("/casus-wordmark.svg") center / contain no-repeat;
+    mask: url("/casus-wordmark.svg") center / contain no-repeat;
+    transition: background-color var(--scheme-ease);
   }
 
   @media (max-width: 760px) {
@@ -244,7 +259,7 @@
     }
     .query {
       max-width: 78vw;
-      font-size: clamp(24px, 8vw, 40px);
+      font-size: clamp(22px, 7.4vw, 40px);
     }
     .landing-eye {
       width: 82vw;
