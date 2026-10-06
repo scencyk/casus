@@ -1,10 +1,13 @@
-# casus — teaser
+# casus — landing
 
-Statyczna strona „stay tuned” do pokazania koncepcji marki. Jeden ekran, bez scrolla.
+Statyczny landing „stay tuned” do pokazania koncepcji marki. Jeden ekran, bez scrolla.
+Projekt: Figma „Naming” → ramka `52:135`.
 
 - Next.js 16 (App Router) + Tailwind v4, statyczny eksport (`output: "export"`)
-- Animacje: [motion](https://motion.dev) — zdania wchodzą słowo po słowie, a litery c-a-s-u-s z ostatniego zdania przelatują w słowo (shared layout, `layoutId`), które przechodzi w logo
-- Treść zdań: `src/components/casus/sentences.ts` (ostatnie zdanie musi zawierać litery c-a-s-u-s w tej kolejności)
+- Fonty: Geist i Geist Mono (`next/font`)
+- Pytanie lekarza pisze się i kasuje w pętli: `src/components/casus/query-typer.tsx` (lista zapytań na górze pliku)
+- Oko w rastrze (`public/eye-halftone.png`) w trybie mieszania `color-dodge`, z wejściem i powolnym „oddechem”; ikona oka mruga; wszystko w CSS (`src/app/globals.css`)
+- Przy „ogranicz ruch” animacje są wyłączone, a pytanie stoi w całości
 
 ## Lokalnie
 

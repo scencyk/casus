@@ -128,125 +128,156 @@
     @apply font-sans;
   }
 }
-/* ───────────── casus teaser ───────────── */
+/* ───────────── casus landing (Figma: Naming → 52:135) ───────────── */
 
 :root {
   --font-sans: var(--font-geist), system-ui, sans-serif;
-  --paper: #f3f2ef;
-  --ink: #3b3a38;
-  --ink-soft: #8a8782;
+  --casus-bg: #270608;
+  --casus-red: #dd0000;
+  --casus-lime: #bffc16;
+  /* frame insets from the Figma frame (537 × 429), as viewport fractions */
+  --pad-x: 5.9vw;
+  --pad-top: 9vh;
+  --pad-bottom: 7vh;
 }
 
 @layer components {
-  .stage {
+  .landing {
     position: relative;
-    display: grid;
-    place-items: center;
     height: 100dvh;
     width: 100%;
     overflow: hidden;
-    background: var(--paper);
-    color: var(--ink);
-    padding: 0 16px;
+    background: var(--casus-bg);
   }
 
-  .seq {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  .seq > * {
-    grid-area: 1 / 1;
-  }
-
-  .sentence {
-    max-width: 15em;
-    text-align: center;
-    font-family: var(--font-sans);
-    font-size: clamp(30px, 4.6vw, 64px);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-    font-weight: 400;
-    text-wrap: balance;
-  }
-  .word {
-    display: inline-block;
-    white-space: pre;
-  }
-  /* emphasis: muted tone */
-  .word.accent {
-    color: var(--ink-soft);
-  }
-  .char {
-    display: inline-block;
-    white-space: pre;
-  }
-
-  .word-stage {
-    position: relative;
-    display: grid;
-    place-items: center;
-  }
-  .word-stage > * {
-    grid-area: 1 / 1;
-  }
-  .casus-word {
-    display: inline-flex;
-    font-family: var(--font-sans);
-    font-size: clamp(64px, 11vw, 150px);
-    line-height: 1;
-    letter-spacing: -0.045em;
-    font-weight: 500;
-  }
-  .logo-wrap {
-    display: grid;
-    place-items: center;
-  }
-  .logo {
-    width: clamp(200px, 26vw, 360px);
-    height: auto;
-    color: var(--ink);
-  }
-
-  .outro {
+  .landing-eye {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 9vh;
+    left: 50.7%;
+    top: 50.2%;
+    width: min(44vw, 56vh);
+    translate: -50% -50%;
+    mix-blend-mode: color-dodge;
+    animation: casus-eye-in 2.4s cubic-bezier(0.22, 1, 0.36, 1) both,
+      casus-eye-breathe 9s ease-in-out 2.4s infinite alternate;
+  }
+  .landing-eye img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .landing-top {
+    position: absolute;
+    top: var(--pad-top);
+    left: var(--pad-x);
+    right: 8.38vw;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .landing-icon {
+    flex: none;
+    width: clamp(18px, 4.47vw, 64px);
+    height: auto;
+    margin-top: 1.26vh;
+    transform-origin: 50% 50%;
+    animation: casus-blink 6s ease-in-out 3s infinite;
+  }
+
+  .query {
+    max-width: 52.5vw;
+    min-height: calc(4 * 1.08em);
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-weight: 500;
+    font-size: clamp(22px, 5.48vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: var(--casus-red);
+    word-break: break-word;
+  }
+  .query-caret {
+    display: inline-block;
+    width: 0.55em;
+    height: 0.95em;
+    margin-left: 0.06em;
+    vertical-align: -0.12em;
+    background: var(--casus-red);
+    animation: casus-caret 1s steps(1) infinite;
+  }
+
+  .landing-bottom {
+    position: absolute;
+    left: var(--pad-x);
+    right: 8.7vw;
+    bottom: var(--pad-bottom);
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    text-align: center;
+    gap: 24px;
+    animation: casus-fade 1.2s ease 0.6s both;
   }
-  .outro-line {
-    font-family: var(--font-sans);
-    font-size: clamp(20px, 2vw, 26px);
+  .landing-tagline {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-weight: 500;
+    font-size: clamp(12px, 2.5vw, 30px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: var(--casus-lime);
   }
-  .outro-line {
-    letter-spacing: -0.02em;
+  .landing-logo {
+    width: clamp(88px, 18.2vw, 220px);
+    height: auto;
   }
-  .outro-line em {
-    font-style: normal;
-    color: var(--ink-soft);
+
+  @media (max-width: 760px) {
+    :root {
+      --pad-x: 20px;
+      --pad-top: 7vh;
+      --pad-bottom: 5vh;
+    }
+    .landing-top {
+      right: 20px;
+    }
+    .landing-bottom {
+      right: 20px;
+    }
+    .query {
+      max-width: 78vw;
+      font-size: clamp(24px, 8vw, 40px);
+    }
+    .landing-eye {
+      width: 82vw;
+      top: 56%;
+    }
   }
-  .outro-soon {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing-eye,
+    .landing-icon,
+    .landing-bottom,
+    .query-caret {
+      animation: none;
+    }
   }
-  .replay {
-    margin-top: 14px;
-    font-size: 12px;
-    color: var(--ink-soft);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-  }
-  .replay:hover {
-    color: var(--ink);
-  }
+}
+
+@keyframes casus-eye-in {
+  from { opacity: 0; scale: 1.08; filter: blur(14px); }
+  to { opacity: 1; scale: 1; filter: blur(0); }
+}
+@keyframes casus-eye-breathe {
+  from { scale: 1; opacity: 1; }
+  to { scale: 1.035; opacity: 0.86; }
+}
+@keyframes casus-blink {
+  0%, 92%, 100% { scale: 1 1; }
+  95% { scale: 1 0.1; }
+}
+@keyframes casus-caret {
+  50% { opacity: 0; }
+}
+@keyframes casus-fade {
+  from { opacity: 0; translate: 0 8px; }
+  to { opacity: 1; translate: 0 0; }
 }
