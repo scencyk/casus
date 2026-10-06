@@ -10,11 +10,16 @@ import { Tagline } from "./tagline";
 // CSS url() doesn't get basePath for plain string paths — prefix by hand.
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Landing built from Figma "Naming" → frame 52:135, with a colour scheme per question.
+// Landing built from Figma "Naming" → frame 52:135.
+// One fixed colour scheme (the Figma frame). To bring back a scheme per question,
+// use `ENTRIES[index].scheme` instead of `SCHEME`.
+const SCHEME = ENTRIES[0].scheme;
+
 export function Landing() {
   const [index, setIndex] = useState(0);
   const next = useCallback(() => setIndex((i) => (i + 1) % ENTRIES.length), []);
-  const { query, scheme } = ENTRIES[index];
+  const { query } = ENTRIES[index];
+  const scheme = SCHEME;
 
   return (
     <main
