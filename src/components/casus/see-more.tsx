@@ -8,8 +8,8 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 // timeline after the section scrolls into view (ms)
-const MORPH_AT = 1700; // "widzieć" → "wiedzieć"
-const LOCKUP_AT = 2500;
+const MORPH_AT = 1100; // "widzieć" → "wiedzieć"
+const LOCKUP_AT = 1800;
 
 const HIDDEN = { opacity: 0, y: 10, filter: "blur(10px)" };
 const SHOWN = { opacity: 1, y: 0, filter: "blur(0px)" };
@@ -56,7 +56,7 @@ export function SeeMore() {
           aria-hidden="true"
           initial={HIDDEN}
           animate={visible ? SHOWN : HIDDEN}
-          transition={{ duration: 0.9, ease: EASE }}
+          transition={{ duration: 0.55, ease: EASE }}
         >
           <motion.span layout="position" className="more-word">
             By
