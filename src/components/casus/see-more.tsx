@@ -17,7 +17,7 @@ const SHOWN = { opacity: 1, y: 0, filter: "blur(0px)" };
 /**
  * Second screen — Figma "Naming" → frame 52:163.
  * "By widzieć więcej." → an "e" slides in to make "wiedzieć" (to see → to know),
- * then the eye + casus lockup and "2026." appear over a faint star field.
+ * then the eye + casus lockup and "2026." appear.
  * Replays every time the section comes back into view.
  */
 export function SeeMore() {
@@ -50,10 +50,6 @@ export function SeeMore() {
       }}
       onViewportLeave={() => setVisible(false)}
     >
-      <div className="more-space" aria-hidden="true">
-        <Image src={`${BASE}/space.png`} alt="" width={655} height={1024} />
-      </div>
-
       <LayoutGroup>
         <motion.p
           className="more-line"
@@ -100,7 +96,7 @@ export function SeeMore() {
         animate={lockupOn ? SHOWN : HIDDEN}
         transition={{ duration: 1, ease: EASE }}
       >
-        <Image className="more-icon" src={`${BASE}/eye-icon-lockup.svg`} alt="" width={24} height={29} />
+        <Image className="more-icon" src={`${BASE}/eye-icon-lockup.svg`} alt="" width={15} height={19} />
         <span className="more-wordmark">casus</span>
       </motion.div>
 
