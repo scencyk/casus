@@ -273,7 +273,7 @@ html {
   }
   .landing-icon {
     flex: none;
-    width: clamp(16px, 3.6vw, 50px);
+    width: clamp(14px, 3.06vw, 43px);
     aspect-ratio: 24 / 29;
     background-color: var(--casus-accent);
     -webkit-mask: var(--icon-url) center / contain no-repeat;
@@ -321,14 +321,14 @@ html {
   .landing-tagline {
     font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-weight: 500;
-    font-size: clamp(11px, 2vw, 24px);
+    font-size: clamp(10px, 1.7vw, 20px);
     line-height: 1.08;
     letter-spacing: -0.04em;
     color: var(--casus-accent);
     transition: color var(--scheme-ease);
   }
   .landing-logo {
-    width: clamp(76px, 14.6vw, 176px);
+    width: clamp(65px, 12.41vw, 150px);
     aspect-ratio: 97.82 / 22.24;
     background-color: var(--casus-mark);
     -webkit-mask: var(--wordmark-url) center / contain no-repeat;
