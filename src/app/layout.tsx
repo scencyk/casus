@@ -25,8 +25,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pl" className={`${geist.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="h-full overflow-hidden">{children}</body>
+    <html lang="pl" className={`${geist.variable} ${geistMono.variable} antialiased`}>
+      <body>{children}</body>
     </html>
   );
 }

@@ -144,23 +144,83 @@
   --pad-bottom: 7vh;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+  background: #270608;
+}
+
 @layer components {
   .landing {
-    position: relative;
-    height: 100dvh;
     width: 100%;
-    overflow: hidden;
     background: var(--casus-bg);
     transition: background-color var(--scheme-ease);
   }
+  .landing-hero,
+  .landing-more {
+    position: relative;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
 
+  /* ── second screen: "By widzieć → wiedzieć więcej." ── */
+  .landing-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6vh;
+    padding: 0 var(--pad-x);
+    text-align: center;
+  }
+  .more-line {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-weight: 500;
+    font-size: clamp(26px, 5.2vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: var(--casus-mark);
+    transition: color var(--scheme-ease);
+  }
+  .more-word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .more-accent {
+    color: var(--casus-ink);
+    transition: color var(--scheme-ease);
+  }
+  .more-letter,
+  .more-new {
+    display: inline-block;
+  }
+  .more-new {
+    overflow: hidden;
+    vertical-align: bottom;
+    color: var(--casus-accent);
+  }
+  .more-logo {
+    display: block;
+    width: clamp(110px, 16vw, 220px);
+    aspect-ratio: 97.82 / 22.24;
+    background-color: var(--casus-mark);
+    -webkit-mask: var(--wordmark-url) center / contain no-repeat;
+    mask: var(--wordmark-url) center / contain no-repeat;
+    transition: background-color var(--scheme-ease);
+  }
+
+  /* No transform/filter on this box: it hosts the fixed-position <Cursor>,
+     and a transformed ancestor would offset it. Animations live on .eye-frame. */
   .landing-eye {
+    --eye-w: min(35vw, 45vh);
     position: absolute;
-    left: 50.7%;
-    top: 50.2%;
-    width: min(35vw, 45vh);
-    translate: -50% -50%;
+    left: calc(50.7% - var(--eye-w) / 2);
+    top: calc(50.2% - var(--eye-w) * 701 / 735 / 2);
+    width: var(--eye-w);
     mix-blend-mode: color-dodge;
+  }
+  .eye-frame {
+    position: relative;
     animation: casus-eye-in 2.4s cubic-bezier(0.22, 1, 0.36, 1) both,
       casus-eye-breathe 9s ease-in-out 2.4s infinite alternate;
   }
@@ -168,6 +228,33 @@
     display: block;
     width: 100%;
     height: auto;
+  }
+  .eye-base {
+    transition: filter 0.6s ease, opacity 0.6s ease;
+  }
+  .eye-sharp {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .lens-ring {
+    width: calc(var(--eye-w) * 0.36);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--casus-accent);
+    box-shadow: 0 0 24px -6px var(--casus-accent);
+    transition: border-color var(--scheme-ease), box-shadow var(--scheme-ease);
+  }
+  /* focus lens only where there is a real pointer */
+  @media (hover: hover) and (pointer: fine) {
+    .landing-eye[data-active] .eye-base {
+      filter: blur(5px);
+      opacity: 0.9;
+    }
+    .landing-eye[data-active] .eye-sharp {
+      opacity: 1;
+    }
   }
 
   .landing-top {
@@ -262,13 +349,13 @@
       font-size: clamp(19px, 6vw, 32px);
     }
     .landing-eye {
-      width: 66vw;
-      top: 56%;
+      --eye-w: 66vw;
+      top: calc(56% - var(--eye-w) * 701 / 735 / 2);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .landing-eye,
+    .eye-frame,
     .landing-icon,
     .landing-bottom,
     .query-caret {
