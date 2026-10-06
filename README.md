@@ -3,8 +3,8 @@
 Statyczna strona „stay tuned” do pokazania koncepcji marki. Jeden ekran, bez scrolla.
 
 - Next.js 16 (App Router) + Tailwind v4, statyczny eksport (`output: "export"`)
-- Animacje: [motion-primitives](https://motion-primitives.com) — `TextEffect`, `TextLoop`, `TextShimmer`, `BorderTrail`
-- Obracający się łuk terminów to czysty CSS (`src/components/casus/arc.tsx` + `globals.css`)
+- Animacje: [motion](https://motion.dev) — zdania wchodzą słowo po słowie, a litery c-a-s-u-s z ostatniego zdania przelatują w słowo (shared layout, `layoutId`), które przechodzi w logo
+- Treść zdań: `src/components/casus/sentences.ts` (ostatnie zdanie musi zawierać litery c-a-s-u-s w tej kolejności)
 
 ## Lokalnie
 

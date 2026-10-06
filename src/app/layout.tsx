@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Geist, Newsreader } from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({
@@ -7,10 +7,9 @@ const geist = Geist({
   subsets: ["latin", "latin-ext"],
 });
 
-const serif = Instrument_Serif({
+const serif = Newsreader({
   variable: "--font-serif",
   subsets: ["latin", "latin-ext"],
-  weight: "400",
   style: ["normal", "italic"],
 });
 
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1a0d08",
+  themeColor: "#f3f2ef",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
