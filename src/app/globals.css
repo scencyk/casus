@@ -133,19 +133,19 @@
 :root {
   --font-sans: var(--font-geist), system-ui, sans-serif;
   /* defaults = Figma frame; overridden per question in landing.tsx */
-  --casus-bg: #270608;
-  --casus-ink: #dd0000;
-  --casus-accent: #bffc16;
+  --casus-bg: #060827;
+  --casus-ink: #d6d1f0;
+  --casus-accent: #d6d1f0;
   --casus-mark: #d6d1f0;
   --scheme-ease: 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   /* frame insets from the Figma frame (537 × 429), as viewport fractions */
   --pad-x: 5.9vw;
-  --pad-top: 9vh;
+  --pad-top: 10.26vh;
   --pad-bottom: 7vh;
 }
 
 html {
-  background: #270608;
+  background: #060827;
 }
 
 @layer components {
@@ -240,6 +240,7 @@ html {
     top: calc(50.2% - var(--eye-w) * 701 / 735 / 2);
     width: var(--eye-w);
     mix-blend-mode: color-dodge;
+    opacity: 0.5;
   }
   .eye-frame {
     position: relative;
@@ -289,17 +290,17 @@ html {
     -webkit-mask: var(--icon-url) center / contain no-repeat;
     mask: var(--icon-url) center / contain no-repeat;
     transition: background-color var(--scheme-ease);
-    margin-top: 1.26vh;
+    margin-top: 0;
     transform-origin: 50% 50%;
     animation: casus-blink 6s ease-in-out 3s infinite;
   }
 
   .query {
-    max-width: 42vw;
+    max-width: 37.8vw;
     min-height: calc(4 * 1.08em);
     font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-weight: 500;
-    font-size: clamp(20px, 4.4vw, 58px);
+    font-size: clamp(16px, 3.945vw, 52px);
     line-height: 1.08;
     letter-spacing: -0.04em;
     color: var(--casus-ink);
@@ -360,7 +361,7 @@ html {
     }
     .query {
       max-width: 78vw;
-      font-size: clamp(19px, 6vw, 32px);
+      font-size: clamp(17px, 5.4vw, 29px);
     }
     .landing-eye {
       --eye-w: 66vw;

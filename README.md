@@ -5,7 +5,7 @@ Projekt: Figma „Naming” → ramka `52:135`.
 
 - Next.js 16 (App Router) + Tailwind v4, statyczny eksport (`output: "export"`)
 - Fonty: Geist i Geist Mono (`next/font`)
-- Pytanie lekarza pisze się i kasuje w pętli: `src/components/casus/schemes.ts` (pytania; pierwszy ekran trzyma stały schemat kolorów z Figmy — w `landing.tsx` można wrócić do osobnego schematu na pytanie)
+- Pytanie lekarza pisze się i kasuje w pętli: `src/components/casus/schemes.ts` (pytania + `LANDING_SCHEME`: stały schemat pierwszego ekranu z Figmy `55:186` — w `landing.tsx` można wrócić do osobnego schematu na pytanie)
 - Soczewka na oku: po najechaniu obraz się rozmywa, a pod kursorem jest ostry (`eye-lens.tsx`)
 - Podpis na dole zmienia się: „for healthcare professionals” ↔ „soon available” (`tagline.tsx`)
 - Drugi ekran po przewinięciu (Figma `52:163`): „By widzieć → wiedzieć więcej.”, oko + casus wyrównane optycznie, „2026.” (`see-more.tsx`); drugi ekran jest pod spodem i odsłania go odjeżdżający pierwszy (sticky); każdy ruch kółkiem/gest/klawisz przesuwa o pełny ekran (`use-screen-paging.ts`)

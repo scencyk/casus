@@ -4,17 +4,17 @@ import { useCallback, useState } from "react";
 import { EyeLens } from "./eye-lens";
 import { QueryTyper } from "./query-typer";
 import { SeeMore } from "./see-more";
-import { ENTRIES } from "./schemes";
+import { ENTRIES, LANDING_SCHEME } from "./schemes";
 import { Tagline } from "./tagline";
 import { useScreenPaging } from "./use-screen-paging";
 
 // CSS url() doesn't get basePath for plain string paths — prefix by hand.
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Landing built from Figma "Naming" → frame 52:135.
-// One fixed colour scheme (the Figma frame). To bring back a scheme per question,
+// Landing built from Figma "Naming" → frames 52:135 (layout) and 55:186 (colours).
+// One fixed colour scheme. To bring back a scheme per question,
 // use `ENTRIES[index].scheme` instead of `SCHEME`.
-const SCHEME = ENTRIES[0].scheme;
+const SCHEME = LANDING_SCHEME;
 
 export function Landing() {
   useScreenPaging();
