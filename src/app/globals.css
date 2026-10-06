@@ -145,7 +145,6 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
   background: #270608;
 }
 
@@ -160,7 +159,6 @@ html {
     position: relative;
     height: 100dvh;
     overflow: hidden;
-    scroll-snap-align: start;
   }
   /* curtain reveal: the hero slides up over the second screen, which stays put underneath */
   .landing-hero {

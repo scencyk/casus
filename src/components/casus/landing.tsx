@@ -6,6 +6,7 @@ import { QueryTyper } from "./query-typer";
 import { SeeMore } from "./see-more";
 import { ENTRIES } from "./schemes";
 import { Tagline } from "./tagline";
+import { useScreenPaging } from "./use-screen-paging";
 
 // CSS url() doesn't get basePath for plain string paths — prefix by hand.
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -16,6 +17,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const SCHEME = ENTRIES[0].scheme;
 
 export function Landing() {
+  useScreenPaging();
   const [index, setIndex] = useState(0);
   const next = useCallback(() => setIndex((i) => (i + 1) % ENTRIES.length), []);
   const { query } = ENTRIES[index];
