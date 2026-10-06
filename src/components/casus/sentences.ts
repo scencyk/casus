@@ -1,4 +1,4 @@
-// Copy for the sequence. Wrap a word in *asterisks* to set it in italic.
+// Copy for the sequence. Wrap a word in *asterisks* to emphasise it (muted tone).
 // The last sentence must contain the letters c-a-s-u-s in order — those
 // letters are pulled out of it to form the word.
 

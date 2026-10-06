@@ -11,7 +11,7 @@ const WORD_IN = 0.7;
 const HOLD = 2.1;
 const EXIT = 0.6;
 const GATHER = 1.5; // letters travelling into the word
-const WORD_HOLD = 1.1; // serif "casus" before it turns into the logo
+const WORD_HOLD = 1.1; // "casus" set in Geist before it turns into the logo
 
 const LAST = SENTENCES.length - 1;
 const FINAL_TOKENS = tokenize(SENTENCES[LAST]);
@@ -114,7 +114,7 @@ function Sentence({ tokens }: { tokens: Token[] }) {
   return (
     <motion.p className="sentence" variants={sentenceVariants} initial="hidden" animate="visible" exit="exit">
       {tokens.map((t, i) => (
-        <motion.span key={i} variants={wordVariants} className={t.italic ? "word italic" : "word"}>
+        <motion.span key={i} variants={wordVariants} className={t.italic ? "word accent" : "word"}>
           {t.text}
           {i < tokens.length - 1 ? " " : ""}
         </motion.span>
@@ -158,7 +158,7 @@ function FinalSentence({ collapsed }: { collapsed: boolean }) {
         });
         if (wi < FINAL_TOKENS.length - 1) charIndex++; // account for the space
         return (
-          <motion.span key={wi} variants={wordVariants} className={t.italic ? "word italic" : "word"}>
+          <motion.span key={wi} variants={wordVariants} className={t.italic ? "word accent" : "word"}>
             {chars}
             {wi < FINAL_TOKENS.length - 1 ? " " : ""}
           </motion.span>
@@ -172,7 +172,7 @@ function Word({ toLogo }: { toLogo: boolean }) {
   return (
     <div className="word-stage">
       <motion.span
-        className="casus-serif"
+        className="casus-word"
         animate={toLogo ? { opacity: 0, filter: "blur(10px)", scale: 0.96 } : { opacity: 1, filter: "blur(0px)", scale: 1 }}
         transition={{ duration: 0.8, ease: EASE }}
       >

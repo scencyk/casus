@@ -164,18 +164,20 @@
   .sentence {
     max-width: 15em;
     text-align: center;
-    font-family: var(--font-serif), Georgia, serif;
+    font-family: var(--font-sans);
     font-size: clamp(30px, 4.6vw, 64px);
-    line-height: 1.04;
-    letter-spacing: -0.012em;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    font-weight: 400;
     text-wrap: balance;
   }
   .word {
     display: inline-block;
     white-space: pre;
   }
-  .word.italic {
-    font-style: italic;
+  /* emphasis: muted tone */
+  .word.accent {
+    color: var(--ink-soft);
   }
   .char {
     display: inline-block;
@@ -190,12 +192,13 @@
   .word-stage > * {
     grid-area: 1 / 1;
   }
-  .casus-serif {
+  .casus-word {
     display: inline-flex;
-    font-family: var(--font-serif), Georgia, serif;
+    font-family: var(--font-sans);
     font-size: clamp(64px, 11vw, 150px);
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.045em;
+    font-weight: 500;
   }
   .logo-wrap {
     display: grid;
@@ -219,11 +222,15 @@
     text-align: center;
   }
   .outro-line {
-    font-family: var(--font-serif), Georgia, serif;
+    font-family: var(--font-sans);
     font-size: clamp(20px, 2vw, 26px);
   }
+  .outro-line {
+    letter-spacing: -0.02em;
+  }
   .outro-line em {
-    font-style: italic;
+    font-style: normal;
+    color: var(--ink-soft);
   }
   .outro-soon {
     font-size: 12px;

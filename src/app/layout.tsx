@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Newsreader } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin", "latin-ext"],
-});
-
-const serif = Newsreader({
-  variable: "--font-serif",
-  subsets: ["latin", "latin-ext"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -25,7 +19,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pl" className={`${geist.variable} ${serif.variable} h-full antialiased`}>
+    <html lang="pl" className={`${geist.variable} h-full antialiased`}>
       <body className="h-full overflow-hidden">{children}</body>
     </html>
   );
