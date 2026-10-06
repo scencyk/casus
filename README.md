@@ -1,7 +1,9 @@
 # casus
 
-Statyczny landing „stay tuned” do pokazania koncepcji marki. Dwa ekrany ze scroll-snap.
-Projekt: Figma „Naming” → ramka `52:135`.
+Statyczny landing „stay tuned” do pokazania koncepcji marki. 
+Projekt: Figma „Naming”. Dwa motywy kolorystyczne (`src/components/casus/themes.ts`):
+- `/` — kremowy (`55:216` + `55:230`)
+- `/granat/` — granatowy (`55:186` + `52:163`)
 
 - Next.js 16 (App Router) + Tailwind v4, statyczny eksport (`output: "export"`)
 - Fonty: Geist i Geist Mono (`next/font`)

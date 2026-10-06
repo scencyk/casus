@@ -144,8 +144,12 @@
   --pad-bottom: 7vh;
 }
 
+/* overscroll colour follows the page theme */
 html {
   background: #060827;
+}
+html:has(.landing[data-theme="cream"]) {
+  background: #f4f8d8;
 }
 
 @layer components {
@@ -175,8 +179,8 @@ html {
 
   /* ── second screen — Figma "Naming" → 52:163 (537 × 429 frame, sizes as vw) ── */
   .landing-more {
-    background: #000;
-    color: #fff;
+    background: var(--more-bg, #000);
+    color: var(--more-ink, #fff);
   }
   .more-line,
   .more-lockup,
@@ -213,8 +217,12 @@ html {
     font-weight: 300;
   }
   .more-icon {
+    display: block;
     width: 0.6em;
-    height: auto;
+    aspect-ratio: 15.4667 / 18.6889;
+    background-color: var(--more-ink, #fff);
+    -webkit-mask: var(--lockup-icon-url) center / contain no-repeat;
+    mask: var(--lockup-icon-url) center / contain no-repeat;
     /* optical: icon centred on the x-height of "casus", not on the line box */
     translate: 0 0.095em;
   }
@@ -229,7 +237,7 @@ html {
     font-weight: 400;
     line-height: 1.08;
     letter-spacing: -0.04em;
-    color: #969696;
+    color: var(--more-year, #969696);
   }
 
   /* Positioned without transform; the entrance/breathing animations live on .eye-frame. */
@@ -239,8 +247,8 @@ html {
     left: calc(50.7% - var(--eye-w) / 2);
     top: calc(50.2% - var(--eye-w) * 701 / 735 / 2);
     width: var(--eye-w);
-    mix-blend-mode: color-dodge;
-    opacity: 0.65;
+    mix-blend-mode: var(--eye-blend, color-dodge);
+    opacity: var(--eye-opacity, 0.65);
   }
   .eye-frame {
     position: relative;
@@ -286,7 +294,7 @@ html {
     flex: none;
     width: clamp(14px, 3.06vw, 43px);
     aspect-ratio: 24 / 29;
-    background-color: var(--casus-accent);
+    background-color: var(--casus-icon, var(--casus-accent));
     -webkit-mask: var(--icon-url) center / contain no-repeat;
     mask: var(--icon-url) center / contain no-repeat;
     transition: background-color var(--scheme-ease);

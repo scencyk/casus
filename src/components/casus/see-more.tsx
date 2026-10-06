@@ -8,10 +8,8 @@ import {
   useReducedMotion,
   useScroll,
 } from "motion/react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 // timeline after the section scrolls into view (ms)
@@ -108,7 +106,7 @@ export function SeeMore() {
         animate={lockupOn ? SHOWN : HIDDEN}
         transition={{ duration: 1, ease: EASE }}
       >
-        <Image className="more-icon" src={`${BASE}/eye-icon-lockup.svg`} alt="" width={15} height={19} />
+        <span className="more-icon" />
         <span className="more-wordmark">casus</span>
       </motion.div>
 

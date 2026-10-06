@@ -4,39 +4,28 @@ import { useCallback, useState } from "react";
 import { EyeLens } from "./eye-lens";
 import { QueryTyper } from "./query-typer";
 import { SeeMore } from "./see-more";
-import { ENTRIES, LANDING_SCHEME } from "./schemes";
+import { ENTRIES } from "./schemes";
 import { Tagline } from "./tagline";
+import { themeVars, type ThemeName } from "./themes";
 import { useScreenPaging } from "./use-screen-paging";
 
 // CSS url() doesn't get basePath for plain string paths — prefix by hand.
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const ASSET_VARS = {
+  "--icon-url": `url("${BASE}/eye-icon.svg")`,
+  "--wordmark-url": `url("${BASE}/casus-wordmark.svg")`,
+  "--lockup-icon-url": `url("${BASE}/eye-icon-lockup.svg")`,
+} as React.CSSProperties;
 
-// Landing built from Figma "Naming" → frames 52:135 (layout) and 55:186 (colours).
-// One fixed colour scheme. To bring back a scheme per question,
-// use `ENTRIES[index].scheme` instead of `SCHEME`.
-const SCHEME = LANDING_SCHEME;
-
-export function Landing() {
+// Landing built from Figma "Naming" → frame 52:135 (layout); colours per theme (themes.ts).
+export function Landing({ theme }: { theme: ThemeName }) {
   useScreenPaging();
   const [index, setIndex] = useState(0);
   const next = useCallback(() => setIndex((i) => (i + 1) % ENTRIES.length), []);
   const { query } = ENTRIES[index];
-  const scheme = SCHEME;
 
   return (
-    <main
-      className="landing"
-      style={
-        {
-          "--casus-bg": scheme.bg,
-          "--casus-ink": scheme.ink,
-          "--casus-accent": scheme.accent,
-          "--casus-mark": scheme.mark,
-          "--icon-url": `url("${BASE}/eye-icon.svg")`,
-          "--wordmark-url": `url("${BASE}/casus-wordmark.svg")`,
-        } as React.CSSProperties
-      }
-    >
+    <main className="landing" data-theme={theme} style={{ ...themeVars(theme), ...ASSET_VARS }}>
       <section className="landing-hero">
         <EyeLens />
 

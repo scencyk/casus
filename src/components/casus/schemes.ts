@@ -40,10 +40,3 @@ export const ENTRIES: Entry[] = [
   },
 ];
 
-/** Fixed scheme of the first screen — Figma "Naming" → frame 55:186 (navy + lavender). */
-export const LANDING_SCHEME: Scheme = {
-  bg: "#060827",
-  ink: "#d6d1f0",
-  accent: "#d6d1f0",
-  mark: "#d6d1f0",
-};
