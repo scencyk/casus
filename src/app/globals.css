@@ -162,6 +162,18 @@ html {
     overflow: hidden;
     scroll-snap-align: start;
   }
+  /* curtain reveal: the hero slides up over the second screen, which stays put underneath */
+  .landing-hero {
+    z-index: 1;
+    background: var(--casus-bg);
+    box-shadow: 0 24px 60px -10px rgb(0 0 0 / 0.7);
+    transition: background-color var(--scheme-ease);
+  }
+  .landing-more {
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
+  }
 
   /* ── second screen — Figma "Naming" → 52:163 (537 × 429 frame, sizes as vw) ── */
   .landing-more {

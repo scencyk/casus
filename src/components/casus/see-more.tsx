@@ -1,6 +1,13 @@
 "use client";
 
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -18,14 +25,25 @@ const SHOWN = { opacity: 1, y: 0, filter: "blur(0px)" };
  * Second screen — Figma "Naming" → frame 52:163.
  * "By widzieć więcej." → an "e" slides in to make "wiedzieć" (to see → to know),
  * then the eye + casus lockup and "2026." appear.
- * Replays every time the section comes back into view.
+ * Revealed from underneath the hero; replays every time it is uncovered again.
  */
 export function SeeMore() {
   const reduce = useReducedMotion();
   const [visible, setVisible] = useState(false);
   const [step, setStep] = useState(0); // 0 line, 1 morphed, 2 lockup
 
-  // Timers only — visibility comes from the viewport events below.
+  // The screen sits underneath the hero (sticky), so it is always "in view" —
+  // trigger on scroll progress instead: shown once the hero is half pulled away.
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const past = y > window.innerHeight * 0.5;
+    if (past !== visible) {
+      if (past) setStep(0);
+      setVisible(past);
+    }
+  });
+
+  // Timers only — visibility comes from the scroll listener above.
   useEffect(() => {
     if (!visible || reduce) return;
     const morph = setTimeout(() => setStep(1), MORPH_AT);
@@ -40,15 +58,9 @@ export function SeeMore() {
   const lockupOn = visible && (reduce || step >= 2);
 
   return (
-    <motion.section
+    <section
       className="landing-more"
       aria-label="By wiedzieć więcej. casus, 2026."
-      viewport={{ amount: 0.6 }}
-      onViewportEnter={() => {
-        setStep(0);
-        setVisible(true);
-      }}
-      onViewportLeave={() => setVisible(false)}
     >
       <LayoutGroup>
         <motion.p
@@ -109,7 +121,7 @@ export function SeeMore() {
       >
         2026.
       </motion.p>
-    </motion.section>
+    </section>
   );
 }
 
