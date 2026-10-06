@@ -1,4 +1,4 @@
-# casus — landing
+# casus
 
 Statyczny landing „stay tuned” do pokazania koncepcji marki. Jeden ekran, bez scrolla.
 Projekt: Figma „Naming” → ramka `52:135`.
@@ -22,5 +22,10 @@ Build używa webpacka (`next build --webpack`) — obejście 404 przy Next 16 + 
 
 ## Deploy
 
-- **Vercel**: import repo, bez dodatkowej konfiguracji.
-- **GitHub Pages**: wrzuć zawartość `out/`. Przy publikacji pod podścieżką (`user.github.io/casus-teaser`) dodaj `basePath: "/casus-teaser"` w `next.config.ts`. Wtedy popraw też ścieżki `url("/eye-icon.svg")` i `url("/casus-wordmark.svg")` w `globals.css`.
+```bash
+npm run deploy
+```
+
+Buduje stronę z `BASE_PATH=/casus` i wypycha `out/` na gałąź `gh-pages`, którą GitHub Pages serwuje pod https://scencyk.github.io/casus/.
+
+Lokalnie `BASE_PATH` jest pusty, więc strona działa pod `/`.

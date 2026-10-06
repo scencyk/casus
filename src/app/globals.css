@@ -185,8 +185,8 @@
     width: clamp(16px, 3.6vw, 50px);
     aspect-ratio: 24 / 29;
     background-color: var(--casus-accent);
-    -webkit-mask: url("/eye-icon.svg") center / contain no-repeat;
-    mask: url("/eye-icon.svg") center / contain no-repeat;
+    -webkit-mask: var(--icon-url) center / contain no-repeat;
+    mask: var(--icon-url) center / contain no-repeat;
     transition: background-color var(--scheme-ease);
     margin-top: 1.26vh;
     transform-origin: 50% 50%;
@@ -240,8 +240,8 @@
     width: clamp(76px, 14.6vw, 176px);
     aspect-ratio: 97.82 / 22.24;
     background-color: var(--casus-mark);
-    -webkit-mask: url("/casus-wordmark.svg") center / contain no-repeat;
-    mask: url("/casus-wordmark.svg") center / contain no-repeat;
+    -webkit-mask: var(--wordmark-url) center / contain no-repeat;
+    mask: var(--wordmark-url) center / contain no-repeat;
     transition: background-color var(--scheme-ease);
   }
 
